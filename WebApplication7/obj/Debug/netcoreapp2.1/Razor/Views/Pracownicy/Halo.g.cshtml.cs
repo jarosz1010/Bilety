@@ -63,7 +63,7 @@ using WebApplication7.Models;
             WriteLiteral("\r\n<!DOCTYPE html>\r\n\r\n<html>\r\n");
             EndContext();
             BeginContext(58, 99, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("head", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "ba8de39deb6c4846afad7a1190b3e7c8", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("head", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "5413a451b6e44ff087708fbfa8892fd5", async() => {
                 BeginContext(64, 86, true);
                 WriteLiteral("\r\n    <meta name=\"viewport\" content=\"width=device-width\" />\r\n    <title>Halo</title>\r\n");
                 EndContext();
@@ -83,7 +83,7 @@ using WebApplication7.Models;
             WriteLiteral("\r\n");
             EndContext();
             BeginContext(159, 37, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("body", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "c138d10d712c46baa9084cb96633321a", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("body", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "a75a20057989431fb9a3823ae1f31a8b", async() => {
                 BeginContext(165, 24, true);
                 WriteLiteral("\r\n    Co to za haslo??\r\n");
                 EndContext();

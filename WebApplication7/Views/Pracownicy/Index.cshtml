@@ -18,11 +18,15 @@
 <table class="table">
     <thead>
         <tr>
+
             <th>
                 @Html.DisplayNameFor(model => model.Imie)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Nazwisko)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PESEL)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Login)
@@ -40,11 +44,15 @@
     <tbody>
 @foreach (var item in Model) {
         <tr>
+
             <td>
                 @Html.DisplayFor(modelItem => item.Imie)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Nazwisko)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PESEL)
             </td>
             <th>
                 @Html.DisplayFor(model => item.Login)

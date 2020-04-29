@@ -63,7 +63,7 @@ using WebApplication7.Models;
             WriteLiteral("\r\n<!DOCTYPE html>\r\n\r\n<html>\r\n");
             EndContext();
             BeginContext(58, 111, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("head", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "f909bc2761494452af61b678a2f42560", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("head", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "f957ae8aa4324076bc75b84fd7340cf9", async() => {
                 BeginContext(64, 98, true);
                 WriteLiteral("\r\n    <meta name=\"viewport\" content=\"width=device-width\" />\r\n    <title>Zaloguj_dyrektor</title>\r\n");
                 EndContext();
@@ -83,7 +83,7 @@ using WebApplication7.Models;
             WriteLiteral("\r\n");
             EndContext();
             BeginContext(171, 38, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("body", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "297f0262bceb4339ae88de1e7ea66e03", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("body", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "11ee6c26170b4ef29db28ba282424a1a", async() => {
                 BeginContext(177, 25, true);
                 WriteLiteral("\r\n    Serwus dyrektorze\r\n");
                 EndContext();

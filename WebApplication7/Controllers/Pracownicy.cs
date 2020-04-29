@@ -6,19 +6,22 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using WebApplication7.Models;
+using Microsoft.Extensions.Logging;
+using WebApplication7.Controllers;
+
+
 
 namespace WebApplication7.Controllers
 {
     public class Pracownicy : Controller
     {
         private readonly WebApplication7Context _context;
-
-        public Pracownicy(WebApplication7Context context)
+        private readonly ILogger _logger;
+        public Pracownicy(WebApplication7Context context, ILogger<Pracownicy> logger)
         {
             _context = context;
+            _logger = logger;
         }
-
-        
 
 
         // GET: Pracownicy
@@ -60,8 +63,7 @@ namespace WebApplication7.Controllers
             {
                 return View("Zaloguj_kasjer");
             }
-
-
+            _logger.LogDebug("DEBUG: użytkownik przeszedł na ekran admina!");
             return View(); 
         }
 

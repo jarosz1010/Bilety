@@ -17,9 +17,11 @@ namespace WebApplication7.Models
 
         public DbSet<WebApplication7.Models.Pracownik> Pracownik { get; set; }
 
-        public DbSet<WebApplication7.Models.Klient> Klientcs { get; set; }
+        public DbSet<WebApplication7.Models.Kupujacy> Kupujacys { get; set; }
 
         public DbSet<WebApplication7.Models.Polaczenie> Trasa { get; set; }
+
+        public DbSet<WebApplication7.Models.Transakcja> Transakcja { get; set; }
 
        
     }

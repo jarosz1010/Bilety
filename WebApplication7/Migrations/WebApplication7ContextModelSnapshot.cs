@@ -19,7 +19,7 @@ namespace WebApplication7.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("WebApplication7.Models.Klient", b =>
+            modelBuilder.Entity("WebApplication7.Models.Kupujacy", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -29,11 +29,13 @@ namespace WebApplication7.Migrations
 
                     b.Property<string>("Nazwisko");
 
+                    b.Property<int>("PESEL");
+
                     b.Property<int>("Znizka");
 
                     b.HasKey("Id");
 
-                    b.ToTable("Klientcs");
+                    b.ToTable("Kupujacys");
                 });
 
             modelBuilder.Entity("WebApplication7.Models.Polaczenie", b =>
@@ -67,11 +69,51 @@ namespace WebApplication7.Migrations
 
                     b.Property<string>("Nazwisko");
 
+                    b.Property<int>("PESEL");
+
                     b.Property<string>("Stanowisko");
 
                     b.HasKey("Id");
 
                     b.ToTable("Pracownik");
+                });
+
+            modelBuilder.Entity("WebApplication7.Models.Transakcja", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int?>("KupujacyId");
+
+                    b.Property<int?>("PolaczenieId");
+
+                    b.Property<int?>("PracownikId");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("KupujacyId");
+
+                    b.HasIndex("PolaczenieId");
+
+                    b.HasIndex("PracownikId");
+
+                    b.ToTable("Transakcja");
+                });
+
+            modelBuilder.Entity("WebApplication7.Models.Transakcja", b =>
+                {
+                    b.HasOne("WebApplication7.Models.Kupujacy", "Kupujacy")
+                        .WithMany()
+                        .HasForeignKey("KupujacyId");
+
+                    b.HasOne("WebApplication7.Models.Polaczenie", "Polaczenie")
+                        .WithMany()
+                        .HasForeignKey("PolaczenieId");
+
+                    b.HasOne("WebApplication7.Models.Pracownik", "Pracownik")
+                        .WithMany()
+                        .HasForeignKey("PracownikId");
                 });
 #pragma warning restore 612, 618
         }

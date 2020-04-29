@@ -1,7 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Net;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -23,7 +26,20 @@ namespace WebApplication7.Controllers
         {
             return View(await _context.Trasa.ToListAsync());
         }
+        // Do zwracania danych stacji
+        public async Task<IActionResult> Zwroc_stacje(string stacja)
+        {
+           
+            return View(await _context.Trasa
+        .Where(e => e.Stacja == stacja)
+        .ToListAsync());
 
+        }
+
+        public async Task<IActionResult> Mapy()
+        {
+            return View();
+        }
         // GET: Polaczenia/Details/5
         public async Task<IActionResult> Details(int? id)
         {

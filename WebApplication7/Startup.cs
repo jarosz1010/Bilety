@@ -11,6 +11,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.EntityFrameworkCore;
 using WebApplication7.Models;
+using Microsoft.Extensions.Logging;
 
 namespace WebApplication7
 {
@@ -33,7 +34,7 @@ namespace WebApplication7
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
-
+            
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
             services.AddDbContext<WebApplication7Context>(options =>
@@ -41,8 +42,9 @@ namespace WebApplication7
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
+            loggerFactory.AddLog4Net();
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();

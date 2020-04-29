@@ -7,64 +7,69 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using WebApplication7.Models;
 
-namespace WebApplication7.Views
+namespace WebApplication7.Controllers
 {
-    public class Klienci : Controller
+    public class Transakcje : Controller
     {
         private readonly WebApplication7Context _context;
 
-        public Klienci(WebApplication7Context context)
+        public Transakcje(WebApplication7Context context)
         {
             _context = context;
         }
 
-        // GET: Klienci
+        // GET: Transakcje
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Klientcs.ToListAsync());
+            return View(await _context.Transakcja.ToListAsync());
         }
 
-        // GET: Klienci/Details/5
-        public async Task<IActionResult> Details(int? id)
+        public async Task<IActionResult> Dodaj()
+       
+        {
+            return View();
+        }
+            // GET: Transakcje/Details/5
+            public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            var klientcs = await _context.Klientcs
+            var transakcja = await _context.Transakcja
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (klientcs == null)
+            if (transakcja == null)
             {
                 return NotFound();
             }
 
-            return View(klientcs);
+            return View(transakcja);
         }
 
-        // GET: Klienci/Create
+        // GET: Transakcje/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: Klienci/Create
+        // POST: Transakcje/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Imie,Nazwisko,Znizka")] Klient klientcs)
+        public async Task<IActionResult> Create([Bind("Id,Klient,Polaczenie,Pracownik")] Transakcja transakcja)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(klientcs);
+                _context.Add(transakcja);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(klientcs);
+            return View(transakcja);
         }
 
-        // GET: Klienci/Edit/5
+        // GET: Transakcje/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -72,22 +77,22 @@ namespace WebApplication7.Views
                 return NotFound();
             }
 
-            var klientcs = await _context.Klientcs.FindAsync(id);
-            if (klientcs == null)
+            var transakcja = await _context.Transakcja.FindAsync(id);
+            if (transakcja == null)
             {
                 return NotFound();
             }
-            return View(klientcs);
+            return View(transakcja);
         }
 
-        // POST: Klienci/Edit/5
+        // POST: Transakcje/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Imie,Nazwisko,Znizka")] Klient klientcs)
+        public async Task<IActionResult> Edit(int id, [Bind("Id")] Transakcja transakcja)
         {
-            if (id != klientcs.Id)
+            if (id != transakcja.Id)
             {
                 return NotFound();
             }
@@ -96,12 +101,12 @@ namespace WebApplication7.Views
             {
                 try
                 {
-                    _context.Update(klientcs);
+                    _context.Update(transakcja);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!KlientcsExists(klientcs.Id))
+                    if (!TransakcjaExists(transakcja.Id))
                     {
                         return NotFound();
                     }
@@ -112,10 +117,10 @@ namespace WebApplication7.Views
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(klientcs);
+            return View(transakcja);
         }
 
-        // GET: Klienci/Delete/5
+        // GET: Transakcje/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -123,30 +128,30 @@ namespace WebApplication7.Views
                 return NotFound();
             }
 
-            var klientcs = await _context.Klientcs
+            var transakcja = await _context.Transakcja
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (klientcs == null)
+            if (transakcja == null)
             {
                 return NotFound();
             }
 
-            return View(klientcs);
+            return View(transakcja);
         }
 
-        // POST: Klienci/Delete/5
+        // POST: Transakcje/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var klientcs = await _context.Klientcs.FindAsync(id);
-            _context.Klientcs.Remove(klientcs);
+            var transakcja = await _context.Transakcja.FindAsync(id);
+            _context.Transakcja.Remove(transakcja);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool KlientcsExists(int id)
+        private bool TransakcjaExists(int id)
         {
-            return _context.Klientcs.Any(e => e.Id == id);
+            return _context.Transakcja.Any(e => e.Id == id);
         }
     }
 }
